@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snake con Cabeza Personalizada</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="startScreen">
+    <h1>🐍 Snake Game</h1>
+    <p>Presiona una flecha para comenzar</p>
+  </div>
+
+  <div id="controls">
+    <span class="speed-button" data-speed="500">🐢</span>
+    <span class="speed-button" data-speed="300">🐍</span>
+    <span class="speed-button" data-speed="150">🐇</span>
+    <span id="score">🍰 0</span>
+    <span id="level">🧱 Nivel: 1</span>
+    <span id="toNextLevel">⏳ 5 para siguiente</span>
+  </div>
+
+  <canvas id="game" width="640" height="640"></canvas>
+  <div id="flash"></div>
+
+  <audio id="eatSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2b012ff204.mp3"></audio>
+  <audio id="gameOverSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_bf1e922a52.mp3"></audio>
+
+  <script src="script.js" defer></script>
+
+  <div id="touchControls">
+    <button class="touch-btn" id="up">⬆️</button>
+    <div>
+      <button class="touch-btn" id="left">⬅️</button>
+      <button class="touch-btn" id="down">⬇️</button>
+      <button class="touch-btn" id="right">➡️</button>
+    </div>
+  </div>
+
+</body>
+</html>
