@@ -17,6 +17,8 @@
     <span class="speed-button" data-speed="300">🐍</span>
     <span class="speed-button" data-speed="150">🐇</span>
     <span id="score">🍰 0</span>
+    <span id="level">🧱 Nivel: 1</span>
+    <span id="toNextLevel">⏳ 5 para siguiente</span>
   </div>
 
   <canvas id="game" width="640" height="640"></canvas>
@@ -26,5 +28,15 @@
   <audio id="gameOverSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_bf1e922a52.mp3"></audio>
 
   <script src="script.js"></script>
+
+  <div id="touchControls">
+    <button class="touch-btn" id="up">⬆️</button>
+    <div>
+      <button class="touch-btn" id="left">⬅️</button>
+      <button class="touch-btn" id="down">⬇️</button>
+      <button class="touch-btn" id="right">➡️</button>
+    </div>
+  </div>
+
 </body>
 </html>

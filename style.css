@@ -13,10 +13,13 @@ html, body {
 canvas {
   background: #222;
   image-rendering: pixelated;
-  width: 640px;
-  height: 640px;
-  box-shadow: 0 0 20px lime;
-  display: none;
+  width: 100vw;
+  max-width: 640px;
+  aspect-ratio: 1 / 1;
+  display: block;
+  margin: 20px auto;
+  position: relative;
+  z-index: 1;
 }
 #controls {
   position: absolute;
@@ -77,21 +80,30 @@ canvas {
   to { opacity: 0; }
 }
 
-
-/* Responsive canvas for mobile */
-canvas {
-  width: 90vmin !important;
-  height: 90vmin !important;
-  max-width: 100vw;
-  max-height: 100vh;
-}
-body {
-  flex-direction: column !important;
-}
-#controls {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}
 #touchControls {
-  bottom: 10px !important;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  z-index: 40;
+}
+
+#touchControls div {
+  display: flex;
+  gap: 10px;
+}
+
+.touch-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  border-radius: 10px;
+  border: none;
+  background-color: #444;
+  color: #fff;
+  box-shadow: 0 0 5px #0f0;
 }

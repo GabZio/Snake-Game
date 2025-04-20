@@ -7,6 +7,11 @@ const startScreen = document.getElementById("startScreen");
 const controls = document.getElementById("controls");
 const flash = document.getElementById("flash");
 
+const levelDisplay = document.getElementById("level");
+const toNextLevelDisplay = document.getElementById("toNextLevel");
+const colors = ["#0f0", "#0ff", "#ff0", "#f0f", "#f00", "#00f"];
+
+
 const gridSize = 30;
 let tileCountX = Math.floor(canvas.width / gridSize);
 let tileCountY = Math.floor(canvas.height / gridSize);
@@ -50,9 +55,11 @@ function gameLoop() {
     eatSound.play();
     showFlash();
     scoreDisplay.textContent = `🍰 ${score}`;
+toNextLevelDisplay.textContent = `⏳ ${5 - (score % 5)} para siguiente`;
 
     if (score % 5 === 0) {
       level++;
+levelDisplay.textContent = `🧱 Nivel: ${level}`;
       currentSpeed = Math.max(80, currentSpeed - 20);
       clearInterval(intervalId);
       intervalId = setInterval(gameLoop, currentSpeed);
@@ -75,11 +82,15 @@ function gameLoop() {
     score = 0;
     level = 1;
     scoreDisplay.textContent = `🍰 ${score}`;
+toNextLevelDisplay.textContent = `⏳ ${5 - (score % 5)} para siguiente`;
     currentSpeed = 150;
     toggleGame(false);
   }
 
+  
+  // Fondo dinámico por nivel
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
 
   ctx.font = "24px monospace";
   ctx.fillStyle = "#fff";
@@ -87,12 +98,15 @@ function gameLoop() {
 
   snake.forEach((segment, index) => {
     if (index === 0) {
-      ctx.drawImage(headImg, segment.x * gridSize, segment.y * gridSize, gridSize * 1.6, gridSize * 1.6);
+      ctx.drawImage(headImg, segment.x * gridSize, segment.y * gridSize, gridSize * 2, gridSize * 2);
     } else {
-      ctx.fillStyle = "lime";
-      ctx.fillRect(segment.x * gridSize + gridSize * 0.2, segment.y * gridSize + gridSize * 0.2, gridSize * 0.6, gridSize * 0.6);
+      ctx.beginPath();
+      ctx.arc(segment.x * gridSize + gridSize / 2, segment.y * gridSize + gridSize / 2, gridSize / 2.2, 0, 2 * Math.PI);
+      ctx.fillStyle = '#0f0';
+      ctx.fill();
     }
   });
+
 }
 
 function toggleGame(startOverride = null) {
@@ -140,3 +154,20 @@ document.querySelectorAll('.speed-button').forEach(btn => {
     }
   });
 });
+
+
+function startGameIfNeeded() {
+  if (!isRunning) {
+    startScreen.style.display = "none";
+    canvas.style.display = "block";
+    controls.style.display = "flex";
+    toggleGame(true);
+  }
+}
+
+
+// Touch controls simulate key presses
+document.getElementById("up").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowUp" })); });
+document.getElementById("down").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" })); });
+document.getElementById("left").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft" })); });
+document.getElementById("right").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" })); });
