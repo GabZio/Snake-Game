@@ -8,6 +8,7 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+  <!-- Pantalla de inicio con ajustes -->
   <div id="startScreen">
     <h1>🐍 Snake Game</h1>
     <div id="settings">
@@ -23,8 +24,9 @@
       <button id="muteButton">🔊</button>
       <button id="startButton">▶️ Jugar</button>
     </div>
+  </div>
 
-  <!-- Touch controls -->
+  <!-- Touch controls (siempre visibles en mobile) -->
   <div id="touchControls">
     <button class="touch-btn" id="up">⬆️</button>
     <div>
@@ -34,8 +36,7 @@
     </div>
   </div>
 
-  </div>
-
+  <!-- Controles durante el juego -->
   <div id="controls">
     <span id="score">🍰 0</span>
     <span id="level">🧱 Nivel: 1</span>
@@ -45,6 +46,7 @@
   <canvas id="game" width="640" height="640"></canvas>
   <div id="flash"></div>
 
+  <!-- Sonidos -->
   <audio id="eatSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2b012ff204.mp3"></audio>
   <audio id="gameOverSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_bf1e922a52.mp3"></audio>
   <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_2b012ff204.mp3" loop></audio>
