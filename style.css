@@ -10,6 +10,7 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
 canvas {
   background: #222;
   image-rendering: pixelated;
@@ -17,10 +18,10 @@ canvas {
   max-width: 640px;
   aspect-ratio: 1 / 1;
   display: block;
-  margin: 20px auto;
-  position: relative;
-  z-index: 1;
+  margin: 0 auto;
+  box-shadow: 0 0 20px lime;
 }
+
 #controls {
   position: absolute;
   top: 10px;
@@ -34,13 +35,15 @@ canvas {
   gap: 10px;
   align-items: center;
 }
-#score {
+#score, #level, #toNextLevel {
   font-size: 18px;
 }
+
 .speed-button {
   cursor: pointer;
   font-size: 20px;
 }
+
 #startScreen {
   position: absolute;
   width: 100%;
@@ -54,21 +57,22 @@ canvas {
   z-index: 20;
   animation: blink 1.5s infinite alternate;
 }
-#startScreen h1 {
-  font-size: 48px;
-  margin: 0;
-}
-#startScreen p {
-  font-size: 18px;
-}
+#startScreen h1 { font-size: 48px; margin: 0; }
+#startScreen p { font-size: 18px; }
 @keyframes blink {
   0% { opacity: 1; }
   100% { opacity: 0.5; }
 }
+
 #flash {
   position: absolute;
-  width: 640px;
-  height: 640px;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  max-width: 640px;
+  height: 100vw;
+  max-height: 640px;
+  transform: translateX(-50%);
   background: rgba(255,255,255,0.3);
   z-index: 30;
   pointer-events: none;
@@ -88,22 +92,21 @@ canvas {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   z-index: 40;
 }
-
 #touchControls div {
   display: flex;
   gap: 10px;
 }
-
 .touch-btn {
   width: 60px;
   height: 60px;
   font-size: 24px;
   border-radius: 10px;
   border: none;
-  background-color: #444;
+  background-color: rgba(0,0,0,0.6);
   color: #fff;
   box-shadow: 0 0 5px #0f0;
+  touch-action: none;
 }

@@ -1,26 +1,3 @@
-
-document.addEventListener('DOMContentLoaded', () => {
-  ['up','down','left','right'].forEach(id => {
-    const btn = document.getElementById(id);
-    const keyMap = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' };
-    const handler = () => {
-      if (!isRunning) startGameIfNeeded();
-      switch(keyMap[id]) {
-        case 'ArrowUp':    if(dy===0){dx=0; dy=-1;} break;
-        case 'ArrowDown':  if(dy===0){dx=0; dy=1;} break;
-        case 'ArrowLeft':  if(dx===0){dx=-1; dy=0;} break;
-        case 'ArrowRight': if(dx===0){dx=1; dy=0;} break;
-      }
-    };
-    ['click','pointerdown','touchstart'].forEach(evt => {
-      btn.addEventListener(evt, e => {
-        e.preventDefault();
-        handler();
-      });
-    });
-  });
-});
-
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const scoreDisplay = document.getElementById("score");
