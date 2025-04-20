@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Snake con Cabeza Personalizada</title>
+  <title>Snake con Música Retro</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
@@ -12,8 +12,14 @@
     <h1>🐍 Snake Game</h1>
     <p>Presiona una flecha para comenzar</p>
   </div>
+  <div id="leaderboard">
+    <h2>🏆 Ranking</h2>
+    <ol id="scoreList"></ol>
+  </div>
+
 
   <div id="controls">
+    <button id="muteButton">🔊</button>
     <span class="speed-button" data-speed="500">🐢</span>
     <span class="speed-button" data-speed="300">🐍</span>
     <span class="speed-button" data-speed="150">🐇</span>
@@ -27,6 +33,7 @@
 
   <audio id="eatSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2b012ff204.mp3"></audio>
   <audio id="gameOverSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_bf1e922a52.mp3"></audio>
+  <audio id="bgMusic" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7f13c2b8d7.mp3?filename=retro-game-loop-6890.mp3" loop></audio>
 
   <div id="touchControls">
     <button class="touch-btn" id="up">⬆️</button>
