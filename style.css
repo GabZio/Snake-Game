@@ -1,124 +1,45 @@
-/* style.css */
-
 html, body {
   background: #1a1a1a;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+  margin: 0; padding: 0;
+  width: 100%; height: 100%;
   overflow: hidden;
   font-family: monospace;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex; justify-content: center; align-items: center;
 }
-
-canvas {
-  background: #222;
-  image-rendering: pixelated;
-  width: 100vw;
-  max-width: 640px;
-  aspect-ratio: 1 / 1;
-  display: block;
-  margin: auto;
-}
-
-#controls {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 10;
-  background: #333;
-  color: #0f0;
-  padding: 5px;
-  border-radius: 5px;
-  display: none;
-  gap: 10px;
-  align-items: center;
-}
-#score, #level, #toNextLevel {
-  font-size: 18px;
-}
-.speed-button {
-  cursor: pointer;
-  font-size: 20px;
-}
-
 #startScreen {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
   background: #111;
-  color: #0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 20;
-  animation: blink 1.5s infinite alternate;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  color: #0f0; z-index: 20;
 }
-#startScreen h1 { font-size: 48px; margin: 0; }
-#startScreen p { font-size: 18px; }
-@keyframes blink {
-  0% { opacity: 1; }
-  100% { opacity: 0.5; }
+#settings {
+  display: flex; gap: 10px; align-items: center;
 }
-
-#flash {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  width: calc(100vw - 40px);
-  max-width: 640px;
-  height: calc(100vw - 40px);
-  max-height: 640px;
-  transform: translateX(-50%);
-  background: rgba(255,255,255,0.3);
-  z-index: 30;
-  pointer-events: none;
-  display: none;
-  animation: flashFade 0.4s forwards;
-}
-@keyframes flashFade {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
-
-#touchControls {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  z-index: 40;
-}
-#touchControls div {
-  display: flex;
-  gap: 10px;
-}
-.touch-btn {
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  border-radius: 10px;
-  border: none;
-  background-color: rgba(0,0,0,0.6);
-  color: #fff;
-  box-shadow: 0 0 5px #0f0;
-  touch-action: none;
-}
-/* Selector de personaje */
-#characterSelect {
-  background: #333;
-  color: #0f0;
-  border: 1px solid #0f0;
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-family: monospace;
-  font-size: 16px;
-  margin-right: 10px;
+#settings select, #settings button {
+  background: #333; color: #0f0;
+  border: 1px solid #0f0; border-radius: 4px;
+  padding: 4px 8px; font-family: monospace; font-size: 16px;
   cursor: pointer;
 }
+#controls {
+  position: absolute; top: 10px; left: 50%;
+  transform: translateX(-50%);
+  display: none; background: #333; color: #0f0;
+  padding: 5px; border-radius: 5px;
+  gap: 10px; align-items: center; z-index: 10;
+}
+canvas {
+  background: #222; image-rendering: pixelated;
+  width: 100vw; max-width: 640px; aspect-ratio: 1/1;
+  display: block; margin: auto;
+}
+#flash {
+  position: absolute; top: 20px; left: 50%;
+  width: calc(100vw - 40px); max-width: 640px;
+  height: calc(100vw - 40px); max-height: 640px;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.3); pointer-events: none;
+  display: none; animation: flashFade 0.4s forwards; z-index: 30;
+}
+@keyframes flashFade { from{opacity:1;} to{opacity:0;} }
