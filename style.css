@@ -26,8 +26,7 @@ canvas {
 #controls {
   position: absolute;
   top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 10px;
   z-index: 10;
   background: #333;
   color: #0f0;
@@ -37,19 +36,9 @@ canvas {
   gap: 10px;
   align-items: center;
 }
-
-#muteButton {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #0f0;
-}
-
 #score, #level, #toNextLevel {
   font-size: 18px;
 }
-
 .speed-button {
   cursor: pointer;
   font-size: 20px;
@@ -68,7 +57,8 @@ canvas {
   z-index: 20;
   animation: blink 1.5s infinite alternate;
 }
-
+#startScreen h1 { font-size: 48px; margin: 0; }
+#startScreen p { font-size: 18px; }
 @keyframes blink {
   0% { opacity: 1; }
   100% { opacity: 0.5; }
@@ -76,17 +66,19 @@ canvas {
 
 #flash {
   position: absolute;
+  top: 20px;
+  left: 50%;
   width: calc(100vw - 40px);
   max-width: 640px;
   height: calc(100vw - 40px);
   max-height: 640px;
+  transform: translateX(-50%);
   background: rgba(255,255,255,0.3);
   z-index: 30;
   pointer-events: none;
   display: none;
   animation: flashFade 0.4s forwards;
 }
-
 @keyframes flashFade {
   from { opacity: 1; }
   to   { opacity: 0; }
@@ -103,7 +95,10 @@ canvas {
   gap: 5px;
   z-index: 40;
 }
-
+#touchControls div {
+  display: flex;
+  gap: 10px;
+}
 .touch-btn {
   width: 60px;
   height: 60px;
@@ -114,29 +109,4 @@ canvas {
   color: #fff;
   box-shadow: 0 0 5px #0f0;
   touch-action: none;
-}
-
-/* Leaderboard */
-#leaderboard {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.7);
-  color: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  z-index: 15;
-}
-#leaderboard h2 {
-  margin: 0 0 5px 0;
-  font-size: 20px;
-}
-#leaderboard ol {
-  list-style: decimal;
-  padding-left: 20px;
-  margin: 0;
-  font-size: 16px;
-}
-#leaderboard li {
-  margin-bottom: 3px;
 }
