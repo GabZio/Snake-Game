@@ -1,3 +1,26 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+  ['up','down','left','right'].forEach(id => {
+    const btn = document.getElementById(id);
+    const keyMap = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' };
+    const handler = () => {
+      if (!isRunning) startGameIfNeeded();
+      switch(keyMap[id]) {
+        case 'ArrowUp':    if(dy===0){dx=0; dy=-1;} break;
+        case 'ArrowDown':  if(dy===0){dx=0; dy=1;} break;
+        case 'ArrowLeft':  if(dx===0){dx=-1; dy=0;} break;
+        case 'ArrowRight': if(dx===0){dx=1; dy=0;} break;
+      }
+    };
+    ['click','pointerdown','touchstart'].forEach(evt => {
+      btn.addEventListener(evt, e => {
+        e.preventDefault();
+        handler();
+      });
+    });
+  });
+});
+
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const scoreDisplay = document.getElementById("score");
@@ -171,15 +194,3 @@ document.getElementById("up").addEventListener("click", () => { startGameIfNeede
 document.getElementById("down").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" })); });
 document.getElementById("left").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowLeft" })); });
 document.getElementById("right").addEventListener("click", () => { startGameIfNeeded(); document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight" })); });
-
-
-
-// Add pointer and touch event listeners for mobile controls
-['up','down','left','right'].forEach(id => {
-  const btn = document.getElementById(id);
-  const keyMap = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' };
-  const handler = () => document.dispatchEvent(new KeyboardEvent('keydown', { key: keyMap[id] }));
-  btn.addEventListener('click', handler);
-  btn.addEventListener('pointerdown', e => { e.preventDefault(); handler(); });
-  btn.addEventListener('touchstart', e => { e.preventDefault(); handler(); });
-});
