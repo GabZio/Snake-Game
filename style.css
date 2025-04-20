@@ -110,3 +110,15 @@ canvas {
   box-shadow: 0 0 5px #0f0;
   touch-action: none;
 }
+/* Selector de personaje */
+#characterSelect {
+  background: #333;
+  color: #0f0;
+  border: 1px solid #0f0;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: monospace;
+  font-size: 16px;
+  margin-right: 10px;
+  cursor: pointer;
+}

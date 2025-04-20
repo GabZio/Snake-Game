@@ -10,13 +10,25 @@
 <body>
   <div id="startScreen">
     <h1>🐍 Snake Game</h1>
-    <p>Presiona una flecha para comenzar</p>
+    <p>Press arrow to start</p>
   </div>
 
   <div id="controls">
+    <!-- Menú para elegir cara -->
+    <select id="characterSelect">
+      <option value="megan.png">Megan</option>
+      <option value="chloe.png">Chloe</option>
+    </select>
+  
+    <!-- Botón de mute -->
+    <button id="muteButton">🔊</button>
+  
+    <!-- Botones de velocidad -->
     <span class="speed-button" data-speed="500">🐢</span>
     <span class="speed-button" data-speed="300">🐍</span>
     <span class="speed-button" data-speed="150">🐇</span>
+  
+    <!-- Información de juego -->
     <span id="score">🍰 0</span>
     <span id="level">🧱 Nivel: 1</span>
     <span id="toNextLevel">⏳ 5 para siguiente</span>

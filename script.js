@@ -22,9 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let level = 1;
   let currentSpeed = 150;
 
-  const headImg = new Image();
-  headImg.src = "snake_head_nobg_resized.png";
-
+  const characterSelect = document.getElementById('characterSelect');
+const headImg = new Image();
+headImg.src = characterSelect.value;
+characterSelect.addEventListener('change', () => {
+  headImg.src = characterSelect.value;
+});
   function getRandomPosition() {
     tileCountX = Math.floor(canvas.width / gridSize);
     tileCountY = Math.floor(canvas.height / gridSize);
